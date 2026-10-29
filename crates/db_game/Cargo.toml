@@ -1,0 +1,25 @@
+[package]
+name = "db_game"
+description = "The game binary."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "dungeonborne"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+bevy.workspace = true
+db_client.workspace = true
+
+[lints]
+workspace = true
+
+[features]
+# Dev profiling: `cargo run --release -p db_game --features profile -- ...` writes a Chrome trace
+# (trace-<timestamp>.json, open in Perfetto or chrome://tracing) of every system's time per frame.
+profile = ["bevy/trace_chrome"]

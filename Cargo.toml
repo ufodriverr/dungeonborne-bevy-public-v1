@@ -1,0 +1,44 @@
+[workspace]
+resolver = "3"
+members = ["crates/db_formats", "crates/db_pipeline", "crates/db_sim", "crates/db_client", "crates/db_game"]
+
+[workspace.package]
+version = "0.8.0"
+edition = "2024"
+rust-version = "1.95"
+license = "GPL-3.0-only"
+publish = false
+
+[workspace.dependencies]
+# Bevy pinned to 0.19.1: newest stable supported by avian3d 0.7, bevy_replicon 0.44 and lightyear 0.30.
+bevy = { version = "=0.19.1" }
+bevy_ecs = { version = "=0.19.1" }
+bevy_app = { version = "=0.19.1" }
+bevy_math = { version = "=0.19.1" }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = { version = "1", features = ["float_roundtrip"] }
+ron = "0.12.2"
+rand_core = "0.10"
+rand_chacha = "0.10.0"
+anyhow = "1"
+avian3d = { version = "=0.7.0", default-features = false }
+db_formats = { path = "crates/db_formats" }
+db_sim = { path = "crates/db_sim" }
+db_client = { path = "crates/db_client" }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_debug_implementations = "warn"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+
+# Fast iteration: optimise dependencies even in dev builds.
+[profile.dev]
+opt-level = 1
+# Line tables only: panics and backtraces keep file:line at a fraction of the link time.
+debug = "line-tables-only"
+[profile.dev.package."*"]
+opt-level = 3
+# No debug info for dependencies (Bevy, avian): the bulk of the linker's work.
+debug = false

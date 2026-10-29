@@ -1,0 +1,14 @@
+{
+  "$schema": "https://recomp.fyi/schema/v1.json",
+  "game": "Dungeonborne",
+  "system": "PC",
+  "type": "port",
+  "project": "Dungeonborne on Bevy",
+  "status": "released",
+  "targets": ["Windows"],
+  "approach": "Engine reimplementation in Rust on Bevy: reads the game data the player extracts from their own install, no original client code run, offline",
+  "maintainers": [{ "name": "ufodriverr", "link": "https://github.com/ufodriverr" }],
+  "links": [{ "label": "Releases", "url": "https://github.com/ufodriverr/dungeonborne-bevy-public-v1/releases" }],
+  "tags": ["rust", "bevy", "reimplementation"],
+  "notes": "0.8: single-player runs on the Crypt and the Gothic Castle with all eight classes, their skills, the monsters' behaviour trees and the bosses, loot, the stash and the merchant, plus a Test Arena. Game files are not included: the data comes from your own install (see EXTRACTION.md)."
+}

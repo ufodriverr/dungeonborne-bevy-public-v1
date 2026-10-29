@@ -1,0 +1,22 @@
+[package]
+name = "db_client"
+description = "Rendering, input, camera, audio, UI. Reads simulation state; holds no gameplay state."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+bevy.workspace = true
+db_formats.workspace = true
+db_sim.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[lints]
+workspace = true
+
+[dev-dependencies]
+# validates the generated effect material formulas (the version wgpu already uses).
+naga = { version = "29.0.4", features = ["wgsl-in"] }

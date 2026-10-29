@@ -1,0 +1,16 @@
+[package]
+name = "db_formats"
+description = "Readers for the data extracted from the Dungeonborne install (config tables, string tables). No Bevy dependency."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+
+[lints]
+workspace = true
